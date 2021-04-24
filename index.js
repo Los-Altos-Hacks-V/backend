@@ -5,7 +5,11 @@ const port = 3000
 app.get('/', (req, res) => {
   
 
-  require('./spotifyAPI')(req, res);
+  const genres = require('./spotifyAPI')(req, res);
+
+  const precentGenre = require('./getDataAsPercent')(genres)
+
+  
   
 })
 
