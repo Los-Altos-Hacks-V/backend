@@ -1,3 +1,5 @@
-module.exports = (res, req) =>{
-    //write your code in here
+module.exports = (req, res) =>{
+    code = req.body.code;
+    state = req.body.state;
+
 }
