@@ -26,6 +26,7 @@ module.exports = async (req, res) =>{
         headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB }
     })
     data = await response.json();
+    console.log(data);
     // USE DATA ABOVE TO CALCULATE NUMBERS FOR GENRE.
     // Data Format: https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recently-played
 
@@ -40,7 +41,7 @@ module.exports = async (req, res) =>{
         let display_name = data["display_name"];
         let email = data["email"];
         let username = data["id"];
+        console.log(display_name, email, username);
         // USE VARIABLES ABOVE TO ADD A NEW ROW IN SQL DATABASE
     }
-
 }
