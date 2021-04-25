@@ -71,6 +71,7 @@ module.exports = async (req, res) =>{
 
 
     console.log(count);
+    res.send(count)
     return {'genrecount':count,'userdata': dataObject}
 
 
