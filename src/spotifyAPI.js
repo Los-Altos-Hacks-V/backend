@@ -18,6 +18,7 @@ module.exports = async (req, res) =>{
     })
     let data = await response.json();
     const token = data["access_token"]
+    console.log(token)
     const tokenB = "Bearer " + token
 
     // Get Recently Played Songs from Token
