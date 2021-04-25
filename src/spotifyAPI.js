@@ -27,9 +27,24 @@ module.exports = async (req, res) =>{
         headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB }
     })
     data = await response.json();
-    console.log(data);
-    console.log('test')
-    res.send(data)
+
+    items = data.items
+
+    artistId = Object.keys(items).map(function(key, index) {
+        return items[key].track.album.artists[0].id;
+     });
+
+    console.log(artistId.join(","))
+     artists = await fetch(`https://api.spotify.com/v1/artists?ids=${artistId.join(",")}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB}
+    })
+    newdata = await artists.json();
+
+    res.send(newdata)
+    console.log(newdata)
+
+  
     // USE DATA ABOVE TO CALCULATE NUMBERS FOR GENRE.
     // Data Format: https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recently-played
 
