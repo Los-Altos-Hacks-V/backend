@@ -8,6 +8,9 @@ const port = 8080
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.get('/', (req,res) =>{
+    res.send('Welcome to the Altego API')
+})
 app.get('/friends', (req, res) => {
   // require('./getFriends')(req, res);
   const genres = require('./spotifyAPI')(req, res);
