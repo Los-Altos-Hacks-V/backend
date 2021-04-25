@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const { URLSearchParams } = require('url');
 
 
-module.exports = (req, res) =>{
+module.exports = async (req, res) =>{
     code = req.body.code;
     // state = req.body.state;
 
@@ -27,12 +27,19 @@ module.exports = (req, res) =>{
     // console.log(params)
 
 
-    fetch('https://accounts.spotify.com/api/token', {
+    const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         body: params,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded'}
-    }).then(res => res.json())
-      .then(json => console.log(json));
+    })
+
+    const data = await response.json();
+
+    console.log(data)
+    
+    
+    // .then(res => res.json())
+    //   .then(json => console.log(json));
     
 
 }
