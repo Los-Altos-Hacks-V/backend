@@ -12,10 +12,13 @@ app.get('/', (req,res) =>{
     res.send('Welcome to the Altego API')
 })
 app.get('/friends', (req, res) => {
+  res.send('HI this is the friends endpt')
   // require('./getFriends')(req, res);
 })
 
 app.get('/spotify-auth', (req, res) => {
+  res.send('HI this is the auth endpt')
+
    require('./src/spotifyAPI')(req, res);
 
   // const genres = {
