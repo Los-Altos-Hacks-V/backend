@@ -28,6 +28,7 @@ module.exports = async (req, res) =>{
     })
     data = await response.json();
     console.log(data);
+    console.log('test')
     res.send(data)
     // USE DATA ABOVE TO CALCULATE NUMBERS FOR GENRE.
     // Data Format: https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recently-played
