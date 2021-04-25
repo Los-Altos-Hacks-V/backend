@@ -70,7 +70,7 @@ module.exports = async (req, res) =>{
     dataObject.id = data["id"];
 
 
-    // console.log(count);
+    console.log(count);
     return {'genrecount':count,'userdata': dataObject}
 
 

@@ -15,6 +15,6 @@ module.exports = (genres) =>{
     }
 
     genres.genrecount = newList
-    
+    console.log(genres)
     return genres
 }

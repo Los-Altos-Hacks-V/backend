@@ -22,7 +22,7 @@ app.post('/spotify-auth', async (req, res) => {
 
   let percentGenres = require('./src/getDataAsPercent')(genres);
 
-  require('./src/knearest')(percentGenres)
+  // require('./src/knearest')(percentGenres)
 
 //   require('./getFriends')(req, res);
 })
