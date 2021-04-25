@@ -3,19 +3,24 @@ const bodyParser = require('body-parser')
 const fetch = require('node-fetch');
 
 const app = express()
-const port = 3000
+const port = 8080
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+
+app.get('/', (req, res) =>{
+    res.send('Welcome to the Altego API')
+})
+
 app.get('/friends', (req, res) => {
-  // require('./getFriends')(req, res);
-  const genres = require('./spotifyAPI')(req, res);
-  const percentGenres = require('./getDataAsPercent')(genres);
+
+  const genres = require('./src/spotifyAPI')(req, res);
+  const percentGenres = require('./src/getDataAsPercent')(genres);
 })
 
 app.get('/spotify-auth', (req, res) => {
-  require('./spotifyAPI')(req, res);
+  require('./src/spotifyAPI')(req, res);
   require('./getFriends')(req, res);
 })
 
