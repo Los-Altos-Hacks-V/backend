@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 
 app.get('/', (req, res) =>{
-    res.send('Welcome to the Altego API')
+    res.send('Welcome to the Altego API, ps Henry is cool')
 })
 
 app.get('/friends', (req, res) => {
