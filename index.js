@@ -13,12 +13,19 @@ app.get('/', (req,res) =>{
 })
 app.get('/friends', (req, res) => {
   // require('./getFriends')(req, res);
-  const genres = require('./spotifyAPI')(req, res);
-  const percentGenres = require('./getDataAsPercent')(genres);
 })
 
 app.get('/spotify-auth', (req, res) => {
-  require('./src/spotifyAPI')(req, res);
+//   require('./src/spotifyAPI')(req, res);
+
+  const genres = {
+      'rock': 5,
+      'rap': 4,
+      'indie': 100
+  }
+
+  const percentGenres = require('./src/getDataAsPercent')(genres);
+
 //   require('./getFriends')(req, res);
 })
 
