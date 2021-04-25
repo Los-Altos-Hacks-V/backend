@@ -34,15 +34,34 @@ module.exports = async (req, res) =>{
         return items[key].track.album.artists[0].id;
      });
 
-    console.log(artistId.join(","))
+    // console.log(artistId.join(","))
+    
      artists = await fetch(`https://api.spotify.com/v1/artists?ids=${artistId.join(",")}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB}
     })
     newdata = await artists.json();
 
-    res.send(newdata)
-    console.log(newdata)
+    genresArray = []
+
+    for(i=0; i<newdata.artists.length; i++){
+        newdata.artists[i].genres.forEach((item)=>{
+            genresArray.push(item)
+            console.log(item)
+        })
+    }
+
+
+    
+    var count = {};
+    genresArray.forEach(function(i) { count[i] = (count[i]||0) + 1;});
+
+
+    console.log(count);
+    res.send(count)
+
+
+
 
   
     // USE DATA ABOVE TO CALCULATE NUMBERS FOR GENRE.
