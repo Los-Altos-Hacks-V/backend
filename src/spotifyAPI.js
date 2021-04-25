@@ -18,7 +18,7 @@ module.exports = async (req, res) =>{
     })
     let data = await response.json();
     const token = data["access_token"]
-    console.log(token)
+    // console.log(token)
     const tokenB = "Bearer " + token
 
     // Get Recently Played Songs from Token
@@ -47,7 +47,7 @@ module.exports = async (req, res) =>{
     for(i=0; i<newdata.artists.length; i++){
         newdata.artists[i].genres.forEach((item)=>{
             genresArray.push(item)
-            console.log(item)
+            // console.log(item)
         })
     }
 
@@ -57,8 +57,8 @@ module.exports = async (req, res) =>{
     genresArray.forEach(function(i) { count[i] = (count[i]||0) + 1;});
 
 
-    console.log(count);
-    res.send(count)
+    // console.log(count);
+    return count
 
 
 
@@ -68,19 +68,19 @@ module.exports = async (req, res) =>{
     // Data Format: https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recently-played
 
     // Get User Info from Token
-    if (true) {
-        // CHANGE 'TRUE' TO A CONDITION THAT CHECKS IF USER IS ALREADY IN SQL DATABASE
-        response = await fetch('https://api.spotify.com/v1/me', {
-            method: 'GET',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB }
-        })
-        data = await response.json();
-        let display_name = data["display_name"];
-        let email = data["email"];
-        let username = data["id"];
+    // if (true) {
+    //     // CHANGE 'TRUE' TO A CONDITION THAT CHECKS IF USER IS ALREADY IN SQL DATABASE
+    //     response = await fetch('https://api.spotify.com/v1/me', {
+    //         method: 'GET',
+    //         headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB }
+    //     })
+    //     data = await response.json();
+    //     let display_name = data["display_name"];
+    //     let email = data["email"];
+    //     let username = data["id"];
 
-        // res.send(display_name, email, username)
-        console.log(display_name, email, username);
-        // USE VARIABLES ABOVE TO ADD A NEW ROW IN SQL DATABASE
-    }
+    //     // res.send(display_name, email, username)
+    //     console.log(display_name, email, username);
+    //     // USE VARIABLES ABOVE TO ADD A NEW ROW IN SQL DATABASE
+    // }
 }

@@ -16,17 +16,11 @@ app.get('/friends', (req, res) => {
   // require('./getFriends')(req, res);
 })
 
-app.post('/spotify-auth', (req, res) => {
+app.post('/spotify-auth', async (req, res) => {
 
-   require('./src/spotifyAPI')(req, res);
+   let genres = await require('./src/spotifyAPI')(req, res);
 
-  // const genres = {
-  //     'rock': 5,
-  //     'rap': 4,
-  //     'indie': 100
-  // }
-  //
-  // const percentGenres = require('./src/getDataAsPercent')(genres);
+  let percentGenres = require('./src/getDataAsPercent')(genres);
 
 //   require('./getFriends')(req, res);
 })
