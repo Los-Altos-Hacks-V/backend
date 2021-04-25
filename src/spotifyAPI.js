@@ -3,6 +3,7 @@ const { URLSearchParams } = require('url');
 
 
 module.exports = async (req, res) =>{
+
     // Get Token from provided Access Code
     code = req.body.code;
     let params = new URLSearchParams();
@@ -56,9 +57,21 @@ module.exports = async (req, res) =>{
     var count = {};
     genresArray.forEach(function(i) { count[i] = (count[i]||0) + 1;});
 
+    response = await fetch('https://api.spotify.com/v1/me', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB }
+    })
+    data = await response.json();
+
+    dataObject = {}
+
+    dataObject.display_name = data["display_name"]
+    dataObject.email = data["email"];
+    dataObject.id = data["id"];
+
 
     // console.log(count);
-    return count
+    return {'genrecount':count,'userdata': dataObject}
 
 
 
@@ -70,14 +83,7 @@ module.exports = async (req, res) =>{
     // Get User Info from Token
     // if (true) {
     //     // CHANGE 'TRUE' TO A CONDITION THAT CHECKS IF USER IS ALREADY IN SQL DATABASE
-    //     response = await fetch('https://api.spotify.com/v1/me', {
-    //         method: 'GET',
-    //         headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': tokenB }
-    //     })
-    //     data = await response.json();
-    //     let display_name = data["display_name"];
-    //     let email = data["email"];
-    //     let username = data["id"];
+
 
     //     // res.send(display_name, email, username)
     //     console.log(display_name, email, username);

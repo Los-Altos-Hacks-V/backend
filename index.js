@@ -18,9 +18,11 @@ app.get('/friends', (req, res) => {
 
 app.post('/spotify-auth', async (req, res) => {
 
-   let genres = await require('./src/spotifyAPI')(req, res);
+  let genres = await require('./src/spotifyAPI')(req, res);
 
   let percentGenres = require('./src/getDataAsPercent')(genres);
+
+  require('./src/knearest')(percentGenres)
 
 //   require('./getFriends')(req, res);
 })

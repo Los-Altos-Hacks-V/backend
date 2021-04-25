@@ -2,14 +2,19 @@
 module.exports = (genres) =>{
     let newList = []
 
-    let total = Object.values(genres)
+    let newGenres = genres.genrecount
+
+    let total = Object.values(newGenres)
 
     total = total.reduce(function(a, b){return a+b;})
 
     // console.log(genres.length)
-    for(var i=0; i< Object.keys(genres).length; i++){
+    for(var i=0; i< Object.keys(newGenres).length; i++){
     
-        newList.push(JSON.parse(`{"${Object.keys(genres)[i]}":"${(Object.values(genres)[i]/total)*100}"}`))
+        newList.push(JSON.parse(`{"${Object.keys(newGenres)[i]}":"${(Object.values(newGenres)[i]/total)*100}"}`))
     }
-    console.log(newList)
+
+    genres.genrecount = newList
+    
+    return genres
 }
