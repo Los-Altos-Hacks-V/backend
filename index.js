@@ -16,8 +16,7 @@ app.get('/friends', (req, res) => {
   // require('./getFriends')(req, res);
 })
 
-app.get('/spotify-auth', (req, res) => {
-  res.send('HI this is the auth endpt')
+app.post('/spotify-auth', (req, res) => {
 
    require('./src/spotifyAPI')(req, res);
 
