@@ -42,6 +42,8 @@ module.exports = async (req, res) =>{
         let display_name = data["display_name"];
         let email = data["email"];
         let username = data["id"];
+
+        res.send(display_name, email, username)
         console.log(display_name, email, username);
         // USE VARIABLES ABOVE TO ADD A NEW ROW IN SQL DATABASE
     }
